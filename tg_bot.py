@@ -68,45 +68,45 @@ def get_receipt_keyboard(user_id):
 @router.message(Command('start'))
 async def start_command(message: types.Message):
     user_id = message.chat.id
-    await message.answer('Бот для создания фейковы скринов перевода.', reply_markup=get_receipt_keyboard(user_id))
+    await message.answer('A bot for creating fake transfer screenshots.', reply_markup=get_receipt_keyboard(user_id))
 
 @router.message(Command('new'))
 async def new_command(message: types.Message, state: FSMContext):
     user_id = message.chat.id
-    await bot.send_message(user_id, "Введите имя и фамилию (Иван И.): ")
+    await bot.send_message(user_id, 'Enter first and last name (Ivan I.): ')
     await state.set_state(Form.name)
 
 @router.callback_query(F.data == 'new_receipt')
 async def start_receipt(callback_query: types.CallbackQuery, state: FSMContext):
     user_id = callback_query.message.chat.id
-    await bot.send_message(user_id, "Введите имя и фамилию (Иван И.): ")
+    await bot.send_message(user_id, 'Enter first and last name (Ivan I.): ')
     await state.set_state(Form.name)
 
 @router.message(Form.name)
 async def process_name(message: types.Message, state: FSMContext):
     name = message.text
     if not re.match(r'^[А-ЯЁа-яёA-Za-z. ]+$', name):
-        await message.answer("Имя должно содержать только буквы, пробелы и точку. Попробуйте снова.")
+        await message.answer('The name must contain only letters, spaces, and a period. Try again. ')
         return
     await state.update_data(name=name)
-    await message.answer("Введите номер телефона (123 456 78 90):")
+    await message.answer('Enter the phone number (123 456 78 90): ')
     await state.set_state(Form.phone)
 
 @router.message(Form.phone)
 async def process_phone(message: types.Message, state: FSMContext):
     phone = message.text
     if not re.match(r'^\d{3} \d{3} \d{2} \d{2}$', phone):
-        await message.answer("Телефон должен быть в формате 123 456 78 90. Попробуйте снова.")
+        await message.answer('The phone should be in the format 123 456 78 90. Try again. ')
         return
     await state.update_data(phone=phone)
-    await message.answer("Введите сумму:")
+    await message.answer('Enter the amount: ')
     await state.set_state(Form.amount)
 
 @router.message(Form.amount)
 async def process_amount(message: types.Message, state: FSMContext):
     amount = message.text
     if not amount.isdigit() or int(amount) <= 0:
-        await message.answer("Сумма должна быть положительным числом. Попробуйте снова.")
+        await message.answer('The sum must be a positive number. Try again.')
         return
     user_id = message.chat.id
     user_data = await state.get_data()
