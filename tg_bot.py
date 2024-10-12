@@ -11,7 +11,6 @@ from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import re
 
-API_TOKEN = ''
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
@@ -67,12 +66,18 @@ def get_receipt_keyboard(user_id):
     return builder.as_markup()
 
 @router.message(Command('start'))
-async def start_process(message: types.Message, state: FSMContext):
+async def start_command(message: types.Message):
     user_id = message.chat.id
-    await message.answer('Бот для создания скринов фейк перевода.', reply_markup=get_receipt_keyboard(user_id))
+    await message.answer('Бот для создания фейковы скринов перевода.', reply_markup=get_receipt_keyboard(user_id))
+
+@router.message(Command('new'))
+async def new_command(message: types.Message, state: FSMContext):
+    user_id = message.chat.id
+    await bot.send_message(user_id, "Введите имя и фамилию (Иван И.): ")
+    await state.set_state(Form.name)
 
 @router.callback_query(F.data == 'new_receipt')
-async def start_process(callback_query: types.CallbackQuery, state: FSMContext):
+async def start_receipt(callback_query: types.CallbackQuery, state: FSMContext):
     user_id = callback_query.message.chat.id
     await bot.send_message(user_id, "Введите имя и фамилию (Иван И.): ")
     await state.set_state(Form.name)
@@ -94,7 +99,7 @@ async def process_phone(message: types.Message, state: FSMContext):
         await message.answer("Телефон должен быть в формате 123 456 78 90. Попробуйте снова.")
         return
     await state.update_data(phone=phone)
-    await message.answer("Введите сумму (52):")
+    await message.answer("Введите сумму:")
     await state.set_state(Form.amount)
 
 @router.message(Form.amount)
