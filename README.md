@@ -19,7 +19,7 @@ pip install aiogram pillow
 
   * To start the bot, run the following command in your terminal:
     ```
-    python bot.py
+    python main.py
     ```
   * Make sure you have set up your bot token and environment properly as per the installation instructions.
   2) **Bot interaction**: Once the bot is running, you can communicate with it through Telegram by finding the bot with the username you registered in BotFather.
