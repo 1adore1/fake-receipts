@@ -15,15 +15,13 @@ cd fake-receipts
 pip install aiogram pillow
 ```
 ### Usage
-#### Running the Bot via Command Line
-1) **Starting the bot**:
+#### Running Script via Command Line
+1) **Using the program**:
 
-  * To start the bot, run the following command in your terminal:
+  * To use program, run the following command in your terminal:
     ```
     python main.py
     ```
-  * Make sure you have set up your bot token and environment properly as per the installation instructions.
-  2) **Bot interaction**: Once the bot is running, you can communicate with it through Telegram by finding the bot with the username you registered in BotFather.
 ---
 #### Using the Bot via Telegram
 Once the bot is running, interact with it via Telegram by following these steps:
