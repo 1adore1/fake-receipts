@@ -1,6 +1,8 @@
 # Telegram Bot for Creating Fake Transfer Screenshots
 ![image](https://github.com/user-attachments/assets/515bbcda-1bbf-4860-8c5b-d654bf38ae63)
 ### Overview
+[```@ScreenshotReceiptBot```](https://t.me/ScreenshotReceiptBot)
+
 This project is a Telegram bot that generates fake transfer receipts in the form of screenshots. 
 Users can interact with the bot, inputting details like phone number, name, and amount, and the bot will generate a custom receipt image. 
 The bot is built using the ```aiogram``` library and utilizes the ```PIL (Pillow)``` library for image manipulation.
@@ -24,7 +26,7 @@ pip install aiogram pillow
     ```
 ---
 #### Using the Bot via Telegram
-```@ScreenshotReceiptBot```
+[```@ScreenshotReceiptBot```](https://t.me/ScreenshotReceiptBot)
 1) **Start interaction**:
 
   * Open a chat with the bot in the Telegram app and type ```/start```.
