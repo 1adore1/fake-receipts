@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 
-def create_image(name, phone, amount):
-    amount = str(amount)
+def create_image(phone, name, amount, path):
+    amount = amount
     numbers = phone.split()
     phone = f'+7 {numbers[0]} {numbers[1]}-{numbers[2]}-{numbers[3]}'
     img = Image.open('source_image.png')
@@ -34,6 +34,11 @@ def create_image(name, phone, amount):
     draw.text(amount_coords, f"–{amount} ₽", font=font_amount, fill=(252, 252, 252))
     draw.text(time_coords, formatted_time, font=font_time, fill=(255, 255, 255))
 
-    img.save('output_image.png')
+    img.save(path + '/output_image.png')
 
-create_image('Джамшенджон И.', '951 809 76 76', 33)
+if __name__ == '__main__':
+    phone = input('Enter the phone number (123 456 78 90): ')
+    name = input('Enter first and last name (Ivan I.): ')
+    amount = input('Enter the amount: ')
+    path = input('Enter path where to save the image: ')
+    create_image(phone, name, amount, path)
