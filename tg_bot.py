@@ -11,7 +11,6 @@ from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import re
 
-API_TOKEN = '7964671215:AAGhmpMm6xoJdzlq2b7gCJXO0dk6RIHeFWE'
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=API_TOKEN)
