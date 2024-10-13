@@ -24,7 +24,8 @@ pip install aiogram pillow
     ```
 ---
 #### Using the Bot via Telegram
-Once the bot is running, interact with it via Telegram by following these steps:
+```@ScreenshotReceiptBot```
+Interact with bot via Telegram by following these steps:
 
 1) **Start interaction**:
 
