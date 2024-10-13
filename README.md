@@ -1,4 +1,5 @@
 # Telegram Bot for Creating Fake Transfer Screenshots
+![image](https://github.com/user-attachments/assets/515bbcda-1bbf-4860-8c5b-d654bf38ae63)
 ### Overview
 This project is a Telegram bot that generates fake transfer receipts in the form of screenshots. 
 Users can interact with the bot, inputting details like phone number, name, and amount, and the bot will generate a custom receipt image. 
